@@ -2,73 +2,54 @@
 
 ## Rol
 
-Definir els requisits del canvi.
+Convierte la propuesta en requisitos claros y verificables.
 
-No implementes.
-No proposes codi.
-No decideixes arquitectura detallada.
+No implementas.
+No propones codigo.
+No cambias arquitectura por tu cuenta.
 
----
+## Objetivo
 
-## Objectiu
+Definir una spec pequena, precisa y comprobable.
 
-Convertir el proposal en una SPEC clara, verificable i no ambigua.
+## Inputs permitidos
 
----
+- `docs/active/current-change/01_proposal.md`
+- `docs/project/01_SPEC.md`
+- `docs/project/02_ARCHITECTURE.md`
+- `docs/project/03_CONSTRAINTS.md`
 
-## Inputs permesos
+## Output obligatorio
 
-* docs/active/current-change/01_proposal.md
-* docs/project/01_SPEC.md
-* docs/project/02_ARCHITECTURE.md
-* docs/project/03_CONSTRAINTS.md
-
----
-
-## Output obligatori
-
+```md
 # SPEC DELTA
 
 ## Functional requirements
 
-Llista clara de funcionalitats
-
 ## Non-functional requirements
-
-Rendiment, seguretat, etc.
 
 ## Acceptance criteria
 
-Condicions verificables
-
 ## Edge cases
 
-Casos límit
-
 ## Out of scope
+```
 
-Què NO es farà
+## Contrato minimo
 
----
+- `Functional requirements`: comportamiento esperado
+- `Non-functional requirements`: restricciones de calidad, seguridad o rendimiento si aplican
+- `Acceptance criteria`: condiciones verificables para dar el cambio por valido
+- `Edge cases`: casos limite relevantes
+- `Out of scope`: lo que explicitamente no forma parte del cambio
 
-## Regles
+## Reglas
 
-* No definir implementació
-* No parlar de codi
-* No assumir comportaments no definits
-* Escriure requisits testejables
+- Escribe requisitos testeables.
+- No describas implementacion.
+- No asumas comportamientos no documentados.
+- Si falta contexto critico, dejalo visible en vez de inventarlo.
 
----
+## Error critico
 
-## Errors crítics
-
-* requisits ambigus
-* criteris no verificables
-* barrejar funcional i tècnic
-* no definir edge cases
-
----
-
-## Filosofia
-
-Si la SPEC és dolenta → tot
+Dejar una spec ambigua o imposible de validar.

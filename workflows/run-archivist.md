@@ -9,8 +9,11 @@ Llegeix aquests fitxers abans d'actuar:
 - agents/archivist.md
 - docs/active/current-change/*
 - docs/project/*
+- docs/memory/index.md
+- docs/memory/decisions/*
+- docs/memory/patterns/*
+- docs/memory/context/*
 - memory/durable/*
-- decisions/*
 
 ## Missió
 
@@ -36,7 +39,7 @@ I deixar net:
 ## Regles obligatòries
 
 - No perdis informació rellevant
-- No copiïs tot a memory
+- No copiïs tot a `docs/memory/`
 - Guarda només aprenentatge durable si realment aplica
 - No deixis residu al context actiu
 - Resumeix decisions i lliçons de forma compacta

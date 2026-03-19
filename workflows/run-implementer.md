@@ -14,6 +14,16 @@ Llegeix aquests fitxers abans d'actuar:
 
 I activa només les skills rellevants segons el tipus de canvi.
 
+If relevant, use memory from:
+
+- docs/memory/decisions/
+- docs/memory/patterns/
+- docs/memory/context/
+
+Do not load all memory.
+Load only what is needed for the current task.
+Prefer existing decisions and validated patterns.
+
 ## Missió
 
 Implementa exclusivament les tasks actuals definides.

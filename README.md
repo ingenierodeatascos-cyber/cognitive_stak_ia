@@ -1,288 +1,154 @@
-# 🧠 Template de Desenvolupament Cognitiu amb IA
+# AI Cognitive Stack Template
 
-Un repositori base estructurat i reutilitzable per construir software utilitzant agents d’IA, workflows controlats i gestió de context net.
+Plantilla para desarrollar software con IA de forma estructurada, con contexto controlado y validacion humana.
 
----
+Esta base esta pensada para dos usos:
 
-## 🚀 Propòsit
+- aprender a trabajar con IA sin saturarte de contexto
+- reutilizar un flujo limpio en proyectos reales pequenos o medianos
 
-Aquest template proporciona un **sistema de desenvolupament cognitiu** per treballar amb IA de manera:
+## Para quien es
 
-* estructurada
-* escalable
-* controlada
-* professional
+Esta plantilla esta optimizada para un estudiante de DAM que quiere aprender a trabajar con IA con control.
 
-Està dissenyat per:
+Tambien puede servir a desarrolladores que quieran una base reusable, pero el modo por defecto prioriza:
 
-* evitar la saturació de context
-* separar pensament i implementació
-* fer el comportament de la IA previsible
-* integrar validació humana (human-in-the-loop)
-* construir projectes reals amb qualitat
+- pocos pasos
+- pocos archivos abiertos a la vez
+- roles claros
+- minima carga contextual
 
----
+## La idea central
 
-## 🧩 Conceptes clau
+El problema principal no es solo el modelo. Es como se organiza el contexto.
 
-### 1. Workflow cognitiu
+Esta plantilla intenta resolver eso con cuatro reglas:
 
-El desenvolupament es divideix en fases:
+1. Un solo cambio activo.
+2. Un workflow corto y repetible.
+3. Roles separados para no mezclar pensar, implementar y revisar.
+4. Memoria reutilizable cargada solo bajo demanda.
 
-```text
-Proposal → Spec → Tasks → Implementation → Review → Archive
-```
+## Flujo base
 
-Cada fase és executada per un agent especialitzat.
+El camino recomendado para empezar es este:
 
----
+1. `planner`
+2. `spec-writer`
+3. `implementer`
+4. `reviewer`
+5. `archivist`
 
-### 2. Context net
+Agentes como `task-writer`, `designer`, `tester` o `security-reviewer` existen como apoyo, pero no forman parte del camino minimo obligatorio.
 
-Només hi ha un canvi actiu:
-
-```text
-docs/active/current-change/
-```
-
-Tot el que està acabat s’arxiva:
+## Estructura minima que debes entender el primer dia
 
 ```text
-docs/archive/
+agents/                      roles de los agentes
+workflows/                   instrucciones para ejecutar cada fase
+templates/                   formato esperado de cada output
+scripts/                     interfaz operativa desde terminal
+docs/project/                contexto estable del proyecto
+docs/active/current-change/  cambio actual
+docs/memory/                 conocimiento reusable para cargar bajo demanda
+memory/                      memoria interna del sistema
 ```
 
-Això evita soroll i millora el rendiment de la IA.
+## Quickstart real
 
----
-
-### 3. Agents
-
-Defineixen el comportament de la IA:
-
-```text
-agents/
-```
-
-Exemples:
-
-* planner
-* spec-writer
-* implementer
-* reviewer
-
----
-
-### 4. Workflows
-
-Prompts reutilitzables per executar cada fase:
-
-```text
-workflows/run-*.md
-```
-
-S’utilitzen dins Codex (o eines similars).
-
----
-
-### 5. Skills
-
-Coneixement modular que es carrega només quan cal:
-
-```text
-skills/
-```
-
-Exemples:
-
-* backend
-* frontend
-* testing
-* security
-
----
-
-### 6. Scripts
-
-Ajuda des de terminal per gestionar el sistema:
-
-```text
-scripts/
-```
-
-* `start-change.sh` → crear un nou canvi
-* `archive-change.sh` → arxivar un canvi
-* `status.sh` → veure estat actual
-
----
-
-### 7. Templates
-
-Estructures base dels documents:
-
-```text
-templates/
-```
-
-Asseguren consistència i qualitat.
-
----
-
-## 📦 Estructura del projecte
-
-```text
-.
-├── AGENTS.md
-├── ORCHESTRATOR.md
-├── agents/
-├── workflows/
-├── skills/
-├── scripts/
-├── templates/
-├── docs/
-│   ├── active/current-change/
-│   └── archive/
-```
-
----
-
-## ⚙️ Com utilitzar-lo
-
-### 1. Crear un nou canvi
-
-```bash
-./scripts/start-change.sh <nom-del-canvi>
-```
-
----
-
-### 2. Executar el workflow (a Codex)
-
-Exemple:
-
-```text
-Segueix workflows/run-planner.md i escriu el resultat a docs/active/current-change/01_proposal.md
-```
-
-Després:
-
-```text
-run-spec-writer → 02_spec_delta.md  
-run-task-writer → 04_tasks.md
-```
-
----
-
-### 3. Validació humana (IMPORTANT)
-
-Abans d’implementar, revisa:
-
-* proposal
-* spec
-* tasks
-
----
-
-### 4. Implementació
-
-```text
-Segueix workflows/run-implementer.md
-```
-
----
-
-### 5. Revisió
-
-```text
-Segueix workflows/run-reviewer.md
-```
-
-Opcional:
-
-* tester
-* security-reviewer
-
----
-
-### 6. Arxivar el canvi
-
-```bash
-./scripts/archive-change.sh <nom-del-canvi>
-```
-
----
-
-## 🔍 Consultar estat
+### 1. Inicializa o revisa el estado
 
 ```bash
 ./scripts/status.sh
 ```
 
-Mostra:
+### 2. Crea un cambio nuevo
 
-* fase actual
-* fitxers existents
-* següent pas recomanat
+```bash
+./scripts/start-change.sh feature-login
+```
 
----
+### 3. Sigue el flujo base
 
-## 🧠 Model mental
+Abre solo lo necesario:
 
-| Component | Funció              |
-| --------- | ------------------- |
-| scripts   | control del sistema |
-| workflows | instruccions        |
-| agents    | comportament        |
-| skills    | coneixement modular |
-| docs      | memòria             |
-| templates | estructura          |
+- `AGENTS.md`
+- `ORCHESTRATOR.md`
+- `docs/project/*`
+- `docs/active/current-change/*`
+- el workflow del agente actual
 
----
+Orden recomendado:
 
-## ❌ Què NO fer
+- `workflows/run-planner.md` -> `docs/active/current-change/01_proposal.md`
+- `workflows/run-spec-writer.md` -> `docs/active/current-change/02_spec_delta.md`
+- `workflows/run-implementer.md` -> `docs/active/current-change/05_implementation_report.md`
+- `workflows/run-reviewer.md` -> `docs/active/current-change/06_review.md`
+- `workflows/run-archivist.md` -> memoria y archivo
 
-* implementar sense spec
-* saltar fases
-* barrejar canvis
-* modificar fora de scope
-* carregar massa context
+### 4. Usa memoria solo si aplica
 
----
+Memoria reusable:
 
-## ✅ Bones pràctiques
+- `docs/memory/decisions/`
+- `docs/memory/patterns/`
+- `docs/memory/context/`
 
-* fer canvis petits
-* validar abans de codificar
-* seguir el workflow
-* revisar sempre el resultat
-* arxivar correctament
+Memoria interna del sistema:
 
----
+- `memory/ephemeral/`
+- `memory/durable/`
+- `memory/engram/`
 
-## 🎯 Per a qui és aquest template
+Regla clave:
 
-* estudiants que aprenen a programar amb IA
-* desenvolupadors que volen control i qualitat
-* projectes reals amb workflows estructurats
-* equips que volen evitar el caos amb IA
+- no cargues toda la memoria
+- carga solo la pieza que ayude a la tarea actual
 
----
+### 5. Arxiva cuando el cambio este cerrado
 
-## 🚀 Extensions futures
+```bash
+./scripts/archive-change.sh feature-login
+```
 
-* CLI (`ai-flow`)
-* memòria persistent (Engram)
-* orquestració multi-agent avançada
-* càrrega automàtica de skills
-* integració amb CI/CD
+## Que carpeta responde a que pregunta
 
----
+- `agents/`: como se comporta cada rol
+- `workflows/`: en que orden se ejecuta el trabajo
+- `templates/`: que forma debe tener cada documento
+- `docs/project/`: que contexto estable define el proyecto
+- `docs/active/current-change/`: que estamos haciendo ahora
+- `docs/memory/`: que conocimiento reusable conviene cargar
+- `memory/`: que memoria interna usa el sistema
+- `scripts/`: como operamos todo esto sin depender de instrucciones largas
 
-## 📌 Nota final
+## Reglas para no saturar contexto
 
-Això no és només un template.
+- No trabajes en varios cambios a la vez.
+- No cargues todo el repo por defecto.
+- No cargues toda la memoria por defecto.
+- Si algo ya esta documentado, referencialo en vez de repetirlo.
+- Guarda solo conocimiento reutilizable.
 
-És una manera de pensar i construir software amb IA.
+## Que no hacer
 
-**Si controles el procés, controles el resultat.**
+- implementar sin proposal o spec
+- mezclar varias tareas no relacionadas
+- inventar requisitos
+- usar memoria como vertedero de notas
+- saltarte la revision humana cuando el cambio no esta claro
 
----
+## Evolucion del sistema
+
+El template ya incluye piezas mas avanzadas, pero la recomendacion es activarlas por fases:
+
+- primero flujo base y contratos
+- despues memoria reusable mas fuerte
+- luego testing y CI/CD
+- finalmente archivado inteligente y automatizacion
+
+## Resumen
+
+No se trata de pedirle mas cosas a la IA.
+
+Se trata de darle menos ruido, mejores limites y un proceso que puedas entender y repetir.

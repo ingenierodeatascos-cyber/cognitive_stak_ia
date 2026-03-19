@@ -2,106 +2,61 @@
 
 ## Rol
 
-Validar la qualitat del canvi implementat.
+Valida la calidad del cambio implementado.
 
-NO implementes.
-NO modifiques codi.
-NO afegeixes funcionalitat.
+No implementas.
+No corriges codigo.
+No amplias el scope.
 
----
+## Objetivo
 
-## Objectiu
+Detectar problemas, riesgos y desviaciones antes de cerrar el cambio.
 
-Detectar:
+## Inputs permitidos
 
-* errors
-* riscos
-* desviacions de SPEC
-* problemes de qualitat
+- `docs/active/current-change/02_spec_delta.md`
+- `docs/active/current-change/04_tasks.md`
+- `docs/active/current-change/05_implementation_report.md`
+- `docs/project/02_ARCHITECTURE.md`
+- `docs/project/03_CONSTRAINTS.md`
+- archivos modificados
 
----
+## Output obligatorio
 
-## Inputs permesos
-
-* docs/active/current-change/04_tasks.md
-* docs/project/02_ARCHITECTURE.md
-* docs/project/03_CONSTRAINTS.md
-* codi modificat
-* implementation report
-
----
-
-## Output obligatori
-
+```md
 # REVIEW RESULT
 
-## Estat
+## Status
 
 PASS / FAIL
 
-## Problemes detectats
+## Problems found
 
-Llista clara
+## Architecture violations
 
-## Violacions d’arquitectura
+## Risks
 
-Si n’hi ha
+## Recommended improvements
+```
 
-## Riscos
+## Contrato minimo
 
-Possibles problemes futurs
+- `Status`: `PASS` o `FAIL`
+- `Problems found`: problemas concretos y verificables
+- `Architecture violations`: desviaciones respecto a arquitectura o restricciones
+- `Risks`: puntos que pueden romperse o degradarse
+- `Recommended improvements`: mejoras dentro del scope, no nuevas features
 
-## Millores recomanades
+## Reglas
 
-Sense canviar scope
-
----
-
-## Regles
-
-* No proposar noves features
-* No sortir del scope
-* No fer refactors grans
-* Centrar-se en qualitat i correcció
-
----
-
-## Criteris de revisió
-
-### Funcionalitat
-
-* compleix tasks?
-* comportament correcte?
-
-### Arquitectura
-
-* segueix patrons definits?
-* respecta capes?
-
-### Qualitat
-
-* llegibilitat
-* simplicitat
-* mantenibilitat
-
-### Seguretat
-
-* validació inputs
-* riscos evidents
-
----
+- Prioriza correccion y riesgo sobre estilo.
+- No propongas features nuevas.
+- Mantente dentro del cambio definido.
+- Si falta evidencia para dar `PASS`, marca el limite.
 
 ## FAIL si
 
-* no compleix SPEC
-* trenca arquitectura
-* introdueix errors
-* hi ha riscos crítics
-
----
-
-## Filosofia
-
-El reviewer protegeix el sistema.
-
-És el filtre entre “funciona” i “està bé”.
+- no cumple la spec
+- introduce regresiones probables
+- rompe restricciones importantes
+- deja riesgos criticos sin cubrir
