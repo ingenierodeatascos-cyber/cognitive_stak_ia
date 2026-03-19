@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  validate-structure:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Check required files
+        run: |
+          echo "Checking structure..."
+
+          test -f AGENTS.md
+          test -f ORCHESTRATOR.md
+          test -f skills/registry.md
+
+          test -d agents
+          test -d workflows
+          test -d docs/project
+          test -d docs/active
+          test -d memory
+
+          echo "Structure OK"
+
+  validate-current-change:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Check current-change structure
+        run: |
+          if [ -d "docs/active/current-change" ]; then
+            echo "Checking current change files..."
+
+            test -f docs/active/current-change/01_proposal.md || exit 1
+            test -f docs/active/current-change/02_spec_delta.md || exit 1
+            test -f docs/active/current-change/04_tasks.md || exit 1
+
+            echo "Current change structure OK"
+          else
+            echo "No active change (OK)"
+          fi
