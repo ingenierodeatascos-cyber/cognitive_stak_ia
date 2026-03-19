@@ -81,10 +81,10 @@ Quan el projecte encara no esta preparat, primer has d'omplir el context base de
 
 Els fitxers importants son:
 
-- [00_PROJECT_STATE.md](/Users/damiacosta/Desktop/Projectes/Templates/ai-cognitive-template/docs/project/00_PROJECT_STATE.md)
-- [01_SPEC.md](/Users/damiacosta/Desktop/Projectes/Templates/ai-cognitive-template/docs/project/01_SPEC.md)
-- [02_ARCHITECTURE.md](/Users/damiacosta/Desktop/Projectes/Templates/ai-cognitive-template/docs/project/02_ARCHITECTURE.md)
-- [03_CONSTRAINTS.md](/Users/damiacosta/Desktop/Projectes/Templates/ai-cognitive-template/docs/project/03_CONSTRAINTS.md)
+- [00_PROJECT_STATE.md](project/00_PROJECT_STATE.md)
+- [01_SPEC.md](project/01_SPEC.md)
+- [02_ARCHITECTURE.md](project/02_ARCHITECTURE.md)
+- [03_CONSTRAINTS.md](project/03_CONSTRAINTS.md)
 
 No cal escriure documents perfectes. Cal que siguin prou clars per respondre:
 
@@ -401,7 +401,7 @@ Si pots respondre aquestes preguntes, no has perdut el control del context.
 
 ## 14. Ruta recomanada per començar avui
 
-1. Llegeix [README.md](/Users/damiacosta/Desktop/Projectes/Templates/ai-cognitive-template/README.md)
+1. Llegeix [README.md](../README.md)
 2. Llegeix aquest manual una vegada sencera
 3. Omple `docs/project/`
 4. Crea un primer canvi petit

@@ -22,7 +22,9 @@ Coordinar agents perquè executin un canvi de forma:
 
 ---
 
-## Flux de fases
+## Flux base recomanat
+
+Aquest és el camí per defecte, especialment per a estudiants de DAM i canvis petits o mitjans:
 
 ### 1. Planner
 
@@ -32,45 +34,56 @@ Defineix el canvi
 
 Defineix requisits
 
-### 3. Task Writer
-
-Descompon en tasques
-
-### 4. Human Approval (Gate)
-
-Validació obligatòria
-
-### 5. Implementer
+### 3. Implementer
 
 Executa codi
 
-### 6. Reviewer
+### 4. Reviewer
 
 Valida qualitat
 
-### 7. Tester (opcional)
-
-Valida comportament
-
-### 8. Security Reviewer (opcional)
-
-Valida seguretat
-
-### 9. Human Approval (Final)
-
-Decisió final
-
-### 10. Archivist
+### 5. Archivist
 
 Tanca i arxiva
 
 ---
 
-## Regles d’or
+## Flux ampliat opcional
+
+Només s'activa si el canvi ho necessita.
+
+### Task Writer
+
+Descompon en tasques si el canvi és massa gran o ambigu
+
+### Designer
+
+Defineix UI o UX si hi ha una capa visual rellevant
+
+### Tester
+
+Valida comportament si el risc funcional és elevat
+
+### Security Reviewer
+
+Valida seguretat si el canvi toca auth, dades sensibles o inputs externs
+
+### Human Approval
+
+S'utilitza com a gate quan:
+
+* hi ha dubtes crítics
+* el scope no està tancat
+* hi ha risc alt
+* el canvi afecta decisions importants
+
+---
+
+## Regles d'or
 
 ### 1. No fer feina real
 
-L’orquestrador mai:
+L'orquestrador mai:
 
 * escriu codi
 * modifica fitxers
@@ -84,19 +97,22 @@ Cada fase es delega a un agent específic.
 
 ---
 
-### 3. Ordre estricte
+### 3. Flux curt per defecte
 
-No saltar fases.
+No activis fases extra si el canvi es pot resoldre amb el flux base.
+
+L'objectiu és reduir càrrega contextual, no afegir burocràcia.
 
 ---
 
-### 4. Gates humans
+### 4. Gates humans quan facin falta
 
 No avançar si:
 
-* no hi ha aprovació
-* hi ha dubtes crítics
-* el context és incomplet
+* no hi ha prou context
+* hi ha contradiccions
+* hi ha risc elevat
+* falta validació humana en una decisió important
 
 ---
 
@@ -126,13 +142,27 @@ Cada agent ha de retornar:
 
 * docs/project/*
 * docs/active/current-change/*
+* docs/memory/* si aplica
 * skills específiques
 
 ### Prohibit
 
-* docs/archive/*
+* docs/archive/* com a context per defecte
 * memòria no rellevant
 * fitxers fora de scope
+* carregar tot el repositori sense necessitat
+
+---
+
+## Quan escalar del flux base al flux ampliat
+
+Escala només si passa alguna d'aquestes situacions:
+
+* el canvi és massa gran per implementar-lo amb seguretat sense tasks
+* hi ha una part visual que necessita disseny previ
+* el risc funcional justifica una fase explícita de testing
+* el risc de seguretat justifica revisió específica
+* hi ha una decisió que necessita aprovació humana abans de continuar
 
 ---
 
@@ -144,7 +174,7 @@ Si detectes:
 * inconsistències
 * riscos elevats
 
-→ parar el flux
+-> parar el flux
 
 ---
 

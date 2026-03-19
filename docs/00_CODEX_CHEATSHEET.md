@@ -4,7 +4,7 @@ Guia rapida de referencia.
 
 Si es la teva primera vegada amb el sistema, comenca per aqui:
 
-- [01_MANUAL_ESTUDIANT_DAM.md](/Users/damiacosta/Desktop/Projectes/Templates/ai-cognitive-template/docs/01_MANUAL_ESTUDIANT_DAM.md)
+- [01_MANUAL_ESTUDIANT_DAM.md](01_MANUAL_ESTUDIANT_DAM.md)
 
 Aquest fitxer no substitueix el manual. Nomes resumeix el flux.
 
