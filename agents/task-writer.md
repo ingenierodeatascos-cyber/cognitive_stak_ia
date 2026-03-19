@@ -20,6 +20,21 @@ Descompondre el canvi en tasks:
 
 ---
 
+## Quan activar aquest agent
+
+Activa'l si:
+
+* el canvi es massa gran per implementar-lo de cop
+* la spec encara es massa abstracta
+* necessites dividir el treball en passos revisables
+
+No l'activis si:
+
+* el canvi es curt i clar
+* el `implementer` pot executar amb seguretat directament des de la spec
+
+---
+
 ## Inputs permesos
 
 * docs/active/current-change/02_spec_delta.md

@@ -29,6 +29,42 @@ jobs:
 
           echo "Structure OK"
 
+  validate-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Validate documentation and scripts
+        run: |
+          chmod +x scripts/validate-docs.sh
+          ./scripts/validate-docs.sh
+
+  validate-flow:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Validate operational flow
+        run: |
+          chmod +x scripts/validate-flow.sh
+          ./scripts/validate-flow.sh
+
+  validate-maintainability:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Validate maintainability rules
+        run: |
+          chmod +x scripts/validate-maintainability.sh
+          ./scripts/validate-maintainability.sh
+
   validate-current-change:
     runs-on: ubuntu-latest
 
@@ -43,7 +79,8 @@ jobs:
 
             test -f docs/active/current-change/01_proposal.md || exit 1
             test -f docs/active/current-change/02_spec_delta.md || exit 1
-            test -f docs/active/current-change/04_tasks.md || exit 1
+            test -f docs/active/current-change/05_implementation_report.md || exit 1
+            test -f docs/active/current-change/06_review.md || exit 1
 
             echo "Current change structure OK"
           else

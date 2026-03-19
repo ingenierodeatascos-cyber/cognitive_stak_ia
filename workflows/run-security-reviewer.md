@@ -1,5 +1,11 @@
 # RUN SECURITY REVIEWER
 
+## Quan s'ha d'utilitzar
+
+Utilitza aquest workflow nomes si el canvi afecta auth, permisos, dades sensibles o inputs externs.
+
+Si el canvi no te impacte de seguretat rellevant, no cal activar-lo.
+
 Llegeix aquests fitxers abans d'actuar:
 
 - AGENTS.md

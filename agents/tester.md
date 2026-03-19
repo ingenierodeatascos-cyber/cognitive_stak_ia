@@ -20,6 +20,21 @@ Verificar que el sistema:
 
 ---
 
+## Quan activar aquest agent
+
+Activa'l si:
+
+* el canvi te risc funcional
+* hi ha edge cases importants
+* cal deixar evidencia explicita del que s'ha provat
+
+No l'activis si:
+
+* el canvi es trivial
+* la revisio ja deixa prou clar que el risc es molt baix
+
+---
+
 ## Inputs permesos
 
 * docs/active/current-change/04_tasks.md

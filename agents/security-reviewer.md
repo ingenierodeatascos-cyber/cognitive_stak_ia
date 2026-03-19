@@ -22,6 +22,22 @@ Detectar riscos de seguretat en:
 
 ---
 
+## Quan activar aquest agent
+
+Activa'l si:
+
+* el canvi toca auth o sessions
+* el canvi toca permisos o autoritzacio
+* el canvi toca dades sensibles
+* el canvi rep inputs externs o integra serveis externs
+
+No l'activis si:
+
+* el canvi no afecta seguretat de forma rellevant
+* el risc es molt baix i no hi ha superfícies noves d'atac
+
+---
+
 ## Inputs permesos
 
 * docs/active/current-change/04_tasks.md
@@ -106,4 +122,3 @@ Millores proposades
 ## Filosofia
 
 El sistema és segur quan assumeix que serà atacat.
-si

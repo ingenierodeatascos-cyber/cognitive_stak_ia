@@ -29,12 +29,19 @@ fi
 
 echo "---- FITXERS DEL CANVI ----"
 
+is_completed_file() {
+  local file="$1"
+  [ -f "$file" ] && [ -s "$file" ] && ! grep -q "<!-- TEMPLATE_STATUS: TODO -->" "$file"
+}
+
 check_file() {
   local file="$1"
   local label="$2"
 
-  if [ -f "$file" ] && [ -s "$file" ]; then
+  if is_completed_file "$file"; then
     echo "OK  $label"
+  elif [ -f "$file" ] && grep -q "<!-- TEMPLATE_STATUS: TODO -->" "$file"; then
+    echo "WARN $label (plantilla pendent d'omplir)"
   elif [ -f "$file" ]; then
     echo "WARN $label (existeix pero buit)"
   else
@@ -55,23 +62,23 @@ check_file "$CHANGE_DIR/09_human_approval.md" "09_human_approval.md"
 echo ""
 echo "---- FASE ESTIMADA ----"
 
-if [ -s "$CHANGE_DIR/09_human_approval.md" ]; then
+if is_completed_file "$CHANGE_DIR/09_human_approval.md"; then
   echo "Canvi practicament llest per arxivar"
-elif [ -s "$CHANGE_DIR/08_security_review.md" ]; then
+elif is_completed_file "$CHANGE_DIR/08_security_review.md"; then
   echo "Revisio de seguretat completada"
-elif [ -s "$CHANGE_DIR/07_test_report.md" ]; then
+elif is_completed_file "$CHANGE_DIR/07_test_report.md"; then
   echo "Testing completat"
-elif [ -s "$CHANGE_DIR/06_review.md" ]; then
+elif is_completed_file "$CHANGE_DIR/06_review.md"; then
   echo "Review completada"
-elif [ -s "$CHANGE_DIR/05_implementation_report.md" ]; then
+elif is_completed_file "$CHANGE_DIR/05_implementation_report.md"; then
   echo "Implementacio completada"
-elif [ -s "$CHANGE_DIR/04_tasks.md" ]; then
+elif is_completed_file "$CHANGE_DIR/04_tasks.md"; then
   echo "Tasks definides - llest per implementar"
-elif [ -s "$CHANGE_DIR/03_design.md" ]; then
+elif is_completed_file "$CHANGE_DIR/03_design.md"; then
   echo "Design completat"
-elif [ -s "$CHANGE_DIR/02_spec_delta.md" ]; then
+elif is_completed_file "$CHANGE_DIR/02_spec_delta.md"; then
   echo "Spec definida"
-elif [ -s "$CHANGE_DIR/01_proposal.md" ]; then
+elif is_completed_file "$CHANGE_DIR/01_proposal.md"; then
   echo "Proposal creada"
 else
   echo "Canvi creat pero sense contingut util encara"
@@ -80,19 +87,19 @@ fi
 echo ""
 echo "---- PROPER PAS SUGGERIT ----"
 
-if [ ! -s "$CHANGE_DIR/01_proposal.md" ]; then
+if ! is_completed_file "$CHANGE_DIR/01_proposal.md"; then
   echo "Executa Planner"
   echo "Workflow: workflows/run-planner.md"
-elif [ ! -s "$CHANGE_DIR/02_spec_delta.md" ]; then
+elif ! is_completed_file "$CHANGE_DIR/02_spec_delta.md"; then
   echo "Executa Spec Writer"
   echo "Workflow: workflows/run-spec-writer.md"
-elif [ ! -s "$CHANGE_DIR/05_implementation_report.md" ]; then
+elif ! is_completed_file "$CHANGE_DIR/05_implementation_report.md"; then
   echo "Fes revisio humana de proposal/spec i despres Implementer"
   echo "Workflow: workflows/run-implementer.md"
-elif [ ! -s "$CHANGE_DIR/06_review.md" ]; then
+elif ! is_completed_file "$CHANGE_DIR/06_review.md"; then
   echo "Executa Reviewer"
   echo "Workflow: workflows/run-reviewer.md"
-elif [ ! -s "$CHANGE_DIR/09_human_approval.md" ]; then
+elif ! is_completed_file "$CHANGE_DIR/09_human_approval.md"; then
   echo "Fes aprovacio humana final i prepara arxiu"
 else
   echo "Executa Archivist i despres arxiva el canvi"

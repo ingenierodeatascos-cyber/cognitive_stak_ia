@@ -1,0 +1,13 @@
+name: Review Placeholder
+
+on:
+  workflow_dispatch:
+
+jobs:
+  review-placeholder:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Placeholder
+        run: |
+          echo "review.yml encara es un placeholder."
+          echo "La revisio principal continua passant pel flux d'agents i documents."

@@ -1,5 +1,11 @@
 # RUN TASK WRITER
 
+## Quan s'ha d'utilitzar
+
+Utilitza aquest workflow nomes si la spec es massa gran, massa abstracta o necessita ser dividida en passos petits.
+
+Si el canvi es petit i clar, no l'activis.
+
 Llegeix aquests fitxers abans d'actuar:
 
 - AGENTS.md

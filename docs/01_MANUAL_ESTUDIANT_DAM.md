@@ -4,6 +4,21 @@ Aquest manual explica com començar a programar amb aquest sistema quan el teu p
 
 La idea no és “fer servir la IA perquè ho faci tot”, sinó aprendre a treballar amb ordre, amb poc context i amb control.
 
+## Mapa de lectura
+
+Aquest document es la guia principal.
+
+Si despres necessites ampliar, ves a:
+
+- [Guia del canvi actiu](02_GUIA_CANVI_ACTIU.md)
+- [Guia dels scripts](03_GUIA_SCRIPTS.md)
+- [Guia de memoria](04_GUIA_MEMORIA.md)
+- [Guia de workflows avancats](05_GUIA_WORKFLOWS_AVANCATS.md)
+- [Forma de treball setmanal](06_TREBALL_SETMANAL.md)
+- [Exemple longitudinal complet](07_EXEMPLE_LONGITUDINAL.md)
+- [Errors habituals i recuperacio](08_ERRORS_HABITUALS.md)
+- [Checklist documental](09_CHECKLIST_DOCUMENTAL.md)
+
 ## 1. Que es aquest sistema
 
 Aquest template serveix per desenvolupar software amb IA sense dependre de converses llargues ni de prompts improvisats.

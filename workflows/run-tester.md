@@ -1,5 +1,11 @@
 # RUN TESTER
 
+## Quan s'ha d'utilitzar
+
+Utilitza aquest workflow nomes si el canvi te risc funcional prou alt com per justificar una fase explicita de testing.
+
+Si el canvi es trivial o la revisio ja es suficient, no cal activar-lo.
+
 Llegeix aquests fitxers abans d'actuar:
 
 - AGENTS.md

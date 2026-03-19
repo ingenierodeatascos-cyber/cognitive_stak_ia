@@ -20,6 +20,22 @@ Convertir els requisits en:
 
 ---
 
+## Quan activar aquest agent
+
+Activa'l si:
+
+* el canvi te una part visual important
+* cal definir pantalles o fluxos d'usuari
+* hi ha risc de confusio en la UI abans d'implementar
+
+No l'activis si:
+
+* el canvi es purament tecnic
+* la UI ja esta clara
+* el flux base ja es pot executar sense dubtes
+
+---
+
 ## Inputs permesos
 
 * docs/active/current-change/02_spec_delta.md

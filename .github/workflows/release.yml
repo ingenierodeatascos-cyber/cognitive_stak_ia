@@ -1,0 +1,13 @@
+name: Release Placeholder
+
+on:
+  workflow_dispatch:
+
+jobs:
+  release-placeholder:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Placeholder
+        run: |
+          echo "release.yml encara es un placeholder."
+          echo "No hi ha pipeline de release automatitzada definida."

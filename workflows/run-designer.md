@@ -1,5 +1,11 @@
 # RUN DESIGNER
 
+## Quan s'ha d'utilitzar
+
+Utilitza aquest workflow nomes si el canvi necessita una definicio visual o de UX abans d'implementar.
+
+Si el canvi es tecnic o molt simple, mantingues el flux base i no l'activis.
+
 Llegeix aquests fitxers abans d'actuar:
 
 - AGENTS.md
