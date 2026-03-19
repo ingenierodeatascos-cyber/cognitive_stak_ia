@@ -2,6 +2,8 @@
 
 Plantilla para desarrollar software con IA de forma estructurada, con contexto controlado y validacion humana.
 
+Si estas empezando desde cero como estudiante de DAM, la guia principal esta en [docs/01_MANUAL_ESTUDIANT_DAM.md](/Users/damiacosta/Desktop/Projectes/Templates/ai-cognitive-template/docs/01_MANUAL_ESTUDIANT_DAM.md).
+
 Esta base esta pensada para dos usos:
 
 - aprender a trabajar con IA sin saturarte de contexto
@@ -61,6 +63,10 @@ memory/                      memoria interna del sistema
 ```bash
 ./scripts/status.sh
 ```
+
+Si es tu primera vez con el sistema, lee antes el manual completo:
+
+- [docs/01_MANUAL_ESTUDIANT_DAM.md](/Users/damiacosta/Desktop/Projectes/Templates/ai-cognitive-template/docs/01_MANUAL_ESTUDIANT_DAM.md)
 
 ### 2. Crea un cambio nuevo
 
@@ -152,3 +158,11 @@ El template ya incluye piezas mas avanzadas, pero la recomendacion es activarlas
 No se trata de pedirle mas cosas a la IA.
 
 Se trata de darle menos ruido, mejores limites y un proceso que puedas entender y repetir.
+
+Guia principal d'inici:
+
+- [docs/01_MANUAL_ESTUDIANT_DAM.md](/Users/damiacosta/Desktop/Projectes/Templates/ai-cognitive-template/docs/01_MANUAL_ESTUDIANT_DAM.md)
+
+Guia rapida:
+
+- [docs/00_CODEX_CHEATSHEET.md](/Users/damiacosta/Desktop/Projectes/Templates/ai-cognitive-template/docs/00_CODEX_CHEATSHEET.md)

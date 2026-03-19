@@ -1,310 +1,115 @@
-# 🧠 CODEX WORKFLOW CHEATSHEET
+# CODEX WORKFLOW CHEATSHEET
 
-Guia ràpida per treballar amb Codex app utilitzant el sistema de workflows, agents i scripts.
+Guia rapida de referencia.
 
----
+Si es la teva primera vegada amb el sistema, comenca per aqui:
 
-# 📦 ESTRUCTURA NECESSÀRIA
+- [01_MANUAL_ESTUDIANT_DAM.md](/Users/damiacosta/Desktop/Projectes/Templates/ai-cognitive-template/docs/01_MANUAL_ESTUDIANT_DAM.md)
 
-Aquest sistema assumeix que el repositori té:
+Aquest fitxer no substitueix el manual. Nomes resumeix el flux.
 
-```
-AGENTS.md
-ORCHESTRATOR.md
+## Flux base recomanat
 
-agents/
-workflows/
-scripts/
-
-docs/
-  active/
-    current-change/
-  archive/
-```
-
----
-
-# 🚀 FLUX COMPLET
-
-```
+```text
 1. start-change.sh
 2. planner
 3. spec-writer
-4. task-writer
-5. (review manual)
-6. implementer
-7. reviewer
-8. tester (opcional)
-9. security-reviewer (opcional)
-10. archivist
-11. archive-change.sh
+4. implementer
+5. reviewer
+6. archivist
+7. archive-change.sh
 ```
 
----
+## Flux ampliat opcional
 
-# ⚙️ PAS 1 — CREAR CANVI
+Utilitza'l nomes si el canvi ho necessita:
 
-📍 Terminal (Codex o local)
+```text
+planner -> spec-writer -> designer/task-writer -> implementer -> reviewer -> tester/security-reviewer -> archivist
+```
+
+## Scripts basics
+
+Crear canvi:
 
 ```bash
 ./scripts/start-change.sh <nom-canvi>
 ```
 
-Exemple:
+Veure estat:
 
 ```bash
-./scripts/start-change.sh manual-payments
+./scripts/status.sh
 ```
 
----
-
-# 🧠 PAS 2 — PLANNER
-
-📍 Codex (chat)
-
-```text
-Segueix exactament workflows/run-planner.md.
-
-El canvi actual és: <descriu el canvi>
-
-Escriu el resultat a:
-docs/active/current-change/01_proposal.md
-
-No implementis res.
-```
-
----
-
-# 📐 PAS 3 — SPEC WRITER
-
-```text
-Segueix exactament workflows/run-spec-writer.md.
-
-Escriu el resultat a:
-docs/active/current-change/02_spec_delta.md
-
-No implementis res.
-```
-
----
-
-# 🎨 PAS 4 — DESIGNER (OPCIONAL)
-
-Només si hi ha UI / UX.
-
-```text
-Segueix exactament workflows/run-designer.md.
-
-Escriu el resultat a:
-docs/active/current-change/03_design.md
-
-No implementis codi.
-```
-
----
-
-# 🧩 PAS 5 — TASK WRITER
-
-```text
-Segueix exactament workflows/run-task-writer.md.
-
-Escriu el resultat a:
-docs/active/current-change/04_tasks.md
-
-No implementis res.
-```
-
----
-
-# 🧠 PAS 6 — REVISIÓ HUMANA (HITL)
-
-📍 Revisa manualment:
-
-* 01_proposal.md
-* 02_spec_delta.md
-* 03_design.md (si existeix)
-* 04_tasks.md
-
-✔ L’abast és correcte?
-✔ Falta alguna cosa?
-✔ Tasks massa grans?
-
-Si cal, demana refinament a Codex.
-
----
-
-# 🛠️ PAS 7 — IMPLEMENTER
-
-```text
-Segueix exactament workflows/run-implementer.md.
-
-Implementa només les tasks actuals.
-
-Escriu el report a:
-docs/active/current-change/05_implementation_report.md
-
-No afegeixis funcionalitat extra.
-```
-
----
-
-# 🔍 PAS 8 — REVIEWER
-
-```text
-Segueix exactament workflows/run-reviewer.md.
-
-Escriu el resultat a:
-docs/active/current-change/06_review.md
-
-No implementis res.
-```
-
----
-
-# 🧪 PAS 9 — TESTER (OPCIONAL)
-
-```text
-Segueix exactament workflows/run-tester.md.
-
-Escriu el resultat a:
-docs/active/current-change/07_test_report.md
-```
-
----
-
-# 🔐 PAS 10 — SECURITY REVIEWER (OPCIONAL)
-
-```text
-Segueix exactament workflows/run-security-reviewer.md.
-
-Escriu el resultat a:
-docs/active/current-change/08_security_review.md
-```
-
----
-
-# 🔧 CORRECCIONS
-
-Si hi ha errors:
-
-```text
-Corregeix els problemes detectats a:
-docs/active/current-change/06_review.md
-
-No canviïs l’abast.
-```
-
----
-
-# 🧾 PAS 11 — ARCHIVIST
-
-```text
-Segueix exactament workflows/run-archivist.md.
-
-Resumeix el canvi i prepara’l per arxiu.
-
-No implementis res.
-```
-
----
-
-# 📦 PAS 12 — ARXIVAR
-
-📍 Terminal
+Arxivar:
 
 ```bash
 ./scripts/archive-change.sh <nom-canvi>
 ```
 
----
+## Fitxers clau del flux base
 
-# 🧠 REGLES CLAU
+- `01_proposal.md`
+- `02_spec_delta.md`
+- `05_implementation_report.md`
+- `06_review.md`
 
-## ❌ NO fer
+## Regles rapides
 
-* implementar sense spec
-* saltar planner
-* modificar fora de scope
-* fer refactors grans sense control
+- no implementis sense `proposal` i `spec`
+- no carreguis tot el repo
+- no carreguis tota la memoria
+- no surtis del scope del canvi
+- revisa abans d'arxivar
 
-## ✅ FER
+## Que obrir segons la fase
 
-* seguir ordre de fases
-* validar abans d’implementar
-* mantenir canvis petits
-* revisar sempre output
+Planner:
 
----
+- `agents/planner.md`
+- `workflows/run-planner.md`
+- `docs/project/*`
 
-# 🧩 COMPONENTS DEL SISTEMA
+Spec Writer:
 
-| Component  | Funció                      |
-| ---------- | --------------------------- |
-| AGENTS.md  | Normes globals del projecte |
-| workflows/ | Prompts reutilitzables      |
-| agents/    | Definició de comportament   |
-| scripts/   | Automatització de terminal  |
-| docs/      | Memòria i canvis            |
+- `agents/spec-writer.md`
+- `workflows/run-spec-writer.md`
+- `01_proposal.md`
 
----
+Implementer:
 
-# 🧠 MODEL MENTAL
+- `agents/implementer.md`
+- `workflows/run-implementer.md`
+- `02_spec_delta.md`
+- `docs/project/02_ARCHITECTURE.md`
+- `docs/project/03_CONSTRAINTS.md`
 
-* Scripts → filesystem
-* Workflows → instruccions
-* Agents → comportament
-* Codex → executor
+Reviewer:
 
----
+- `agents/reviewer.md`
+- `workflows/run-reviewer.md`
+- `02_spec_delta.md`
+- `05_implementation_report.md`
 
-# ⚡ SHORTCUTS
+Archivist:
 
-## Planner
+- `agents/archivist.md`
+- `workflows/run-archivist.md`
+- `docs/active/current-change/*`
+- `docs/memory/index.md`
 
-```
-Segueix workflows/run-planner.md → 01_proposal.md
-```
+## Model mental
 
-## Spec
+- `docs/project/` -> que es el projecte
+- `docs/active/current-change/` -> que estic fent ara
+- `docs/memory/` -> que val la pena recordar
+- `memory/` -> memoria interna del sistema
 
-```
-Segueix workflows/run-spec-writer.md → 02_spec_delta.md
-```
+## Recordatori final
 
-## Tasks
+Si et perds:
 
-```
-Segueix workflows/run-task-writer.md → 04_tasks.md
-```
-
-## Implement
-
-```
-Segueix workflows/run-implementer.md → 05_implementation_report.md
-```
-
-## Review
-
-```
-Segueix workflows/run-reviewer.md → 06_review.md
-```
-
----
-
-# 🧠 RECORDATORI FINAL
-
-👉 Els .md NO s’executen sols
-👉 Tu llances la fase
-👉 Codex executa
-👉 Scripts només ajuden amb estructura
-
----
-
-# 🚀 NIVELL PRO (FUTUR)
-
-* Afegir CLI (`ai-flow`)
-* Integrar Engram (memòria)
-* Skills registry modular
-* Multi-worktree amb Codex
-
----
+1. executa `./scripts/status.sh`
+2. mira en quina fase estas
+3. obre nomes els fitxers d'aquella fase
