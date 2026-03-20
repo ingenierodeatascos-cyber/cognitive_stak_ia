@@ -90,6 +90,33 @@ La regla practica es:
 - si pertany al canvi actual -> `docs/active/current-change/`
 - si pot servir en futurs canvis -> `docs/memory/`
 
+## Primeros 10 minutos
+
+Si vols començar sense perdre't, fes nomes aquest recorregut:
+
+1. executa `./scripts/status.sh`
+2. si no hi ha canvi actiu, executa `./scripts/start-change.sh nom-del-canvi`
+3. obre nomes:
+   - `agents/planner.md`
+   - `workflows/run-planner.md`
+   - `docs/project/*`
+   - `docs/active/current-change/01_proposal.md`
+4. quan acabis la proposal, segueix amb `02_spec_delta.md`
+5. despres segueix amb `05_implementation_report.md`
+6. despres segueix amb `06_review.md`
+
+Ignora per ara:
+
+- `03_design.md`
+- `04_tasks.md`
+- `07_test_report.md`
+- `08_security_review.md`
+- qualsevol memoria no relacionada amb la tasca
+
+El flux minim real es:
+
+`status.sh` -> `start-change.sh` -> `proposal` -> `spec` -> `implementacio` -> `review` -> `archive-change.sh`
+
 ## 5. Com iniciar un projecte des de zero
 
 Quan el projecte encara no esta preparat, primer has d'omplir el context base del projecte.
@@ -129,7 +156,7 @@ Executa:
 ./scripts/start-change.sh init-task-crud
 ```
 
-Aixo et crea la carpeta:
+Aixo et crea el workspace del canvi actiu a:
 
 - `docs/active/current-change/`
 
@@ -142,8 +169,9 @@ Despres mira l'estat:
 Aquest script et diu:
 
 - si hi ha canvi actiu
-- quins fitxers estan plens o buits
-- en quina fase estas
+- estat actual de la fase
+- quins fitxers obrir ara
+- quins pots ignorar per ara
 - quin es el seguent pas recomanat
 
 ## 7. Flux base pas a pas

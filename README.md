@@ -41,35 +41,68 @@ Peces com `task-writer`, `designer`, `tester` o `security-reviewer` son opcional
 
 ## Quickstart
 
-### 1. Mira l'estat
+Si es la teva primera vegada, fes nomes aixo.
+
+### 1. Mira si ja hi ha un canvi actiu
 
 ```bash
 ./scripts/status.sh
 ```
 
-### 2. Crea un canvi nou
+### 2. Si no hi ha canvi actiu, crea'n un
 
 ```bash
-./scripts/start-change.sh feature-login
+./scripts/start-change.sh mi-primer-canvi
 ```
 
 Aixo genera el workspace temporal dins `docs/active/current-change/`.
 
-### 3. Segueix el flux base
+### 3. Treballa nomes amb el flux minim
 
+Obre nomes aquests fitxers:
+
+- `agents/planner.md`
 - `workflows/run-planner.md`
-- `workflows/run-spec-writer.md`
-- `workflows/run-implementer.md`
-- `workflows/run-reviewer.md`
-- `workflows/run-archivist.md`
+- `docs/project/*`
+- `docs/active/current-change/01_proposal.md`
 
-### 4. Arxiva quan estigui tancat
+Quan tanquis la proposal, continua amb:
+
+- `agents/spec-writer.md`
+- `workflows/run-spec-writer.md`
+- `docs/active/current-change/02_spec_delta.md`
+
+Despres continua amb:
+
+- `agents/implementer.md`
+- `workflows/run-implementer.md`
+- `docs/active/current-change/05_implementation_report.md`
+
+Despres continua amb:
+
+- `agents/reviewer.md`
+- `workflows/run-reviewer.md`
+- `docs/active/current-change/06_review.md`
+
+Ignora per ara:
+
+- `03_design.md`
+- `04_tasks.md`
+- `07_test_report.md`
+- `08_security_review.md`
+
+### 4. Quan tanquis el canvi, arxiva'l
 
 ```bash
-./scripts/archive-change.sh feature-login
+./scripts/archive-change.sh
 ```
 
 L'arxiu queda a `docs/archive/<any>/<nom-canvi>/` com a historic local per defecte.
+
+## Regla del primer dia
+
+Si dubtes, no obris mes context.
+Obre nomes els fitxers de la fase actual.
 
 ## Estructura minima
 
@@ -108,4 +141,4 @@ memory/                      memòria interna del sistema
 
 ## Regla final
 
-Si tens dubtes, no obris mes context: obre menys context i segueix la fase actual.
+Segueix sempre el flux curt abans d'activar cap peça opcional.

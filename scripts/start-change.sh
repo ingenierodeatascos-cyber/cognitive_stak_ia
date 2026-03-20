@@ -31,12 +31,8 @@ touch "$CHANGE_DIR/.gitkeep"
 touch "$CHANGE_DIR/00_meta.md"
 touch "$CHANGE_DIR/01_proposal.md"
 touch "$CHANGE_DIR/02_spec_delta.md"
-touch "$CHANGE_DIR/03_design.md"
-touch "$CHANGE_DIR/04_tasks.md"
 touch "$CHANGE_DIR/05_implementation_report.md"
 touch "$CHANGE_DIR/06_review.md"
-touch "$CHANGE_DIR/07_test_report.md"
-touch "$CHANGE_DIR/08_security_review.md"
 touch "$CHANGE_DIR/09_human_approval.md"
 
 cat <<EOF > "$META_FILE"
@@ -86,41 +82,6 @@ cat <<EOF > "$CHANGE_DIR/02_spec_delta.md"
 ## Out of scope
 EOF
 
-cat <<EOF > "$CHANGE_DIR/03_design.md"
-# DESIGN
-
-<!-- TEMPLATE_STATUS: TODO -->
-
-## Notes
-
-Aquest fitxer es opcional.
-Utilitza'l nomes si el canvi necessita definir UI, pantalles o fluxos d'usuari.
-
-## Screens
-
-## User flows
-
-## Components
-
-## States
-EOF
-
-cat <<EOF > "$CHANGE_DIR/04_tasks.md"
-# TASKS
-
-<!-- TEMPLATE_STATUS: TODO -->
-
-## Notes
-
-Aquest fitxer es opcional.
-Utilitza'l nomes si el canvi es prou gran com per necessitar tasks separades.
-
-## Task list
-
-- task 1
-- task 2
-EOF
-
 cat <<EOF > "$CHANGE_DIR/05_implementation_report.md"
 # IMPLEMENTATION RESULT
 
@@ -155,48 +116,6 @@ PASS / FAIL
 ## Risks
 
 ## Recommended improvements
-EOF
-
-cat <<EOF > "$CHANGE_DIR/07_test_report.md"
-# TEST REPORT
-
-<!-- TEMPLATE_STATUS: TODO -->
-
-## Notes
-
-Aquest fitxer es opcional.
-Utilitza'l si el canvi necessita una fase explicita de testing.
-
-## Tested scenarios
-
-## Results
-
-## Edge cases
-
-## Failures
-
-## Not tested
-EOF
-
-cat <<EOF > "$CHANGE_DIR/08_security_review.md"
-# SECURITY REVIEW
-
-<!-- TEMPLATE_STATUS: TODO -->
-
-## Notes
-
-Aquest fitxer es opcional.
-Utilitza'l si el canvi toca auth, dades sensibles, permisos o inputs externs.
-
-## Risk level
-
-LOW / MEDIUM / HIGH / CRITICAL
-
-## Issues found
-
-## Attack vectors
-
-## Recommendations
 EOF
 
 cat <<EOF > "$CHANGE_DIR/09_human_approval.md"

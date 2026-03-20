@@ -1,100 +1,59 @@
 # CODEX WORKFLOW CHEATSHEET
 
-Referencia rapida del sistema.
-
-Si es la teva primera vegada, comenca per aqui:
-
-- [Manual d'inici per a estudiants de DAM](01_MANUAL_ESTUDIANT_DAM.md)
-
-## Flux base
-
-```text
-start-change.sh
-planner
-spec-writer
-implementer
-reviewer
-archivist
-archive-change.sh
-```
-
-## Flux ampliat opcional
-
-```text
-designer / task-writer / tester / security-reviewer
-```
-
-Activa'l nomes si el canvi ho necessita.
-
-## Scripts basics
-
-Crear canvi:
-
-```bash
-./scripts/start-change.sh <nom-canvi>
-```
-
-Veure estat:
+## Flux minim
 
 ```bash
 ./scripts/status.sh
+./scripts/start-change.sh <nom-canvi>
 ```
 
-Arxivar:
-
-```bash
-./scripts/archive-change.sh <nom-canvi>
-```
-
-## Fitxers clau del flux base
+Despres treballa nomes amb:
 
 - `01_proposal.md`
 - `02_spec_delta.md`
 - `05_implementation_report.md`
 - `06_review.md`
 
-## Que obrir segons la fase
+## Que obrir ara
 
 Planner:
 
 - `agents/planner.md`
 - `workflows/run-planner.md`
 - `docs/project/*`
+- `docs/active/current-change/01_proposal.md`
 
 Spec Writer:
 
 - `agents/spec-writer.md`
 - `workflows/run-spec-writer.md`
-- `01_proposal.md`
+- `docs/active/current-change/02_spec_delta.md`
 
 Implementer:
 
 - `agents/implementer.md`
 - `workflows/run-implementer.md`
-- `02_spec_delta.md`
+- `docs/active/current-change/05_implementation_report.md`
 
 Reviewer:
 
 - `agents/reviewer.md`
 - `workflows/run-reviewer.md`
-- `05_implementation_report.md`
+- `docs/active/current-change/06_review.md`
 
-Archivist:
+## Ignora per ara
 
-- `agents/archivist.md`
-- `workflows/run-archivist.md`
-- `docs/active/current-change/*`
+- `03_design.md`
+- `04_tasks.md`
+- `07_test_report.md`
+- `08_security_review.md`
 
-## Regles rapides
+## Tancament
 
-- no implementis sense `proposal` i `spec`
-- no carreguis tot el repo
-- no carreguis tota la memoria
-- no surtis del scope
-- revisa abans d'arxivar
+```bash
+./scripts/archive-change.sh
+```
 
-## Si et perds
+## Regla rapida
 
-1. executa `./scripts/status.sh`
-2. mira en quina fase estas
-3. obre nomes els fitxers d'aquella fase
+Si et perds, executa `./scripts/status.sh` i obre nomes el que et demana.

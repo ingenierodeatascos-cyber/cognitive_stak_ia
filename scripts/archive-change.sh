@@ -6,17 +6,8 @@ set -euo pipefail
 # VALIDACIÓ INPUT
 # =========================
 
-if [ -z "$1" ]; then
-  echo "❌ Has d'indicar el nom del canvi"
-  echo "Exemple: ./scripts/archive-change.sh feature-login"
-  exit 1
-fi
-
-CHANGE_NAME=$1
 CHANGE_DIR="docs/active/current-change"
 YEAR=$(date +"%Y")
-ARCHIVE_BASE="docs/archive/$YEAR"
-ARCHIVE_PATH="$ARCHIVE_BASE/$CHANGE_NAME"
 META_FILE="$CHANGE_DIR/00_meta.md"
 
 has_active_change_files() {
@@ -31,6 +22,23 @@ if [ ! -d "$CHANGE_DIR" ] || ! has_active_change_files; then
   echo "❌ No hi ha cap canvi actiu a $CHANGE_DIR"
   exit 1
 fi
+
+if [ "${1:-}" ]; then
+  CHANGE_NAME="$1"
+elif [ -f "$META_FILE" ]; then
+  CHANGE_NAME="$(grep '^name:' "$META_FILE" | head -n 1 | cut -d':' -f2- | xargs)"
+else
+  CHANGE_NAME=""
+fi
+
+if [ -z "$CHANGE_NAME" ]; then
+  echo "❌ No s'ha pogut determinar el nom del canvi"
+  echo "Exemple: ./scripts/archive-change.sh feature-login"
+  exit 1
+fi
+
+ARCHIVE_BASE="docs/archive/$YEAR"
+ARCHIVE_PATH="$ARCHIVE_BASE/$CHANGE_NAME"
 
 # =========================
 # VALIDAR QUE NO EXISTEIXI JA L'ARXIU

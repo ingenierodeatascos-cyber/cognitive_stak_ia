@@ -24,13 +24,23 @@ touch docs/active/current-change/.gitkeep
 echo "Checking start-change..."
 ./scripts/start-change.sh flow-test >/tmp/validate-flow-start.log
 
+test -f docs/active/current-change/00_meta.md
 test -f docs/active/current-change/01_proposal.md
 test -f docs/active/current-change/02_spec_delta.md
 test -f docs/active/current-change/05_implementation_report.md
 test -f docs/active/current-change/06_review.md
+test -f docs/active/current-change/09_human_approval.md
+test ! -f docs/active/current-change/03_design.md
+test ! -f docs/active/current-change/04_tasks.md
+test ! -f docs/active/current-change/07_test_report.md
+test ! -f docs/active/current-change/08_security_review.md
 
 echo "Checking status after start-change..."
 status_output="$(./scripts/status.sh)"
+echo "$status_output" | grep -q "ESTADO ACTUAL"
+echo "$status_output" | grep -q "ABRE AHORA"
+echo "$status_output" | grep -q "IGNORA POR AHORA"
+echo "$status_output" | grep -q "SIGUIENTE PASO"
 echo "$status_output" | grep -q "Executa Planner"
 
 cat <<'EOF' > docs/active/current-change/01_proposal.md
@@ -209,7 +219,7 @@ status_output="$(./scripts/status.sh)"
 echo "$status_output" | grep -q "Executa Archivist i despres arxiva el canvi"
 
 echo "Checking archive-change..."
-./scripts/archive-change.sh flow-test >/tmp/validate-flow-archive.log
+./scripts/archive-change.sh >/tmp/validate-flow-archive.log
 
 test -d "docs/archive/$(date +"%Y")/flow-test"
 

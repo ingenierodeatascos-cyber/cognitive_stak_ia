@@ -4,6 +4,13 @@ set -euo pipefail
 
 CHANGE_DIR="docs/active/current-change"
 META_FILE="$CHANGE_DIR/00_meta.md"
+CORE_FILES=(
+  "01_proposal.md"
+  "02_spec_delta.md"
+  "05_implementation_report.md"
+  "06_review.md"
+  "09_human_approval.md"
+)
 
 echo "=================================="
 echo " AI COGNITIVE TEMPLATE - STATUS"
@@ -15,9 +22,21 @@ has_active_change_files() {
 }
 
 if [ ! -d "$CHANGE_DIR" ] || ! has_active_change_files; then
+  echo "---- ESTADO ACTUAL ----"
   echo "No hi ha cap canvi actiu."
   echo ""
-  echo "Per començar un canvi nou:"
+  echo "---- ABRE AHORA ----"
+  echo "- README.md"
+  echo "- docs/00_CODEX_CHEATSHEET.md"
+  echo "- docs/01_MANUAL_ESTUDIANT_DAM.md"
+  echo ""
+  echo "---- IGNORA POR AHORA ----"
+  echo "- design"
+  echo "- tasks"
+  echo "- tests"
+  echo "- security"
+  echo ""
+  echo "---- SIGUIENTE PASO ----"
   echo "./scripts/start-change.sh <nom-canvi>"
   exit 0
 fi
@@ -137,12 +156,8 @@ check_file() {
 
 check_file "$CHANGE_DIR/01_proposal.md" "01_proposal.md"
 check_file "$CHANGE_DIR/02_spec_delta.md" "02_spec_delta.md"
-check_file "$CHANGE_DIR/03_design.md" "03_design.md"
-check_file "$CHANGE_DIR/04_tasks.md" "04_tasks.md"
 check_file "$CHANGE_DIR/05_implementation_report.md" "05_implementation_report.md"
 check_file "$CHANGE_DIR/06_review.md" "06_review.md"
-check_file "$CHANGE_DIR/07_test_report.md" "07_test_report.md"
-check_file "$CHANGE_DIR/08_security_review.md" "08_security_review.md"
 check_file "$CHANGE_DIR/09_human_approval.md" "09_human_approval.md"
 
 echo ""
@@ -150,18 +165,10 @@ echo "---- FASE ESTIMADA ----"
 
 if is_coherent_file "$CHANGE_DIR/09_human_approval.md"; then
   echo "Canvi practicament llest per arxivar"
-elif is_completed_file "$CHANGE_DIR/08_security_review.md"; then
-  echo "Revisio de seguretat completada"
-elif is_completed_file "$CHANGE_DIR/07_test_report.md"; then
-  echo "Testing completat"
 elif is_coherent_file "$CHANGE_DIR/06_review.md"; then
   echo "Review completada"
 elif is_coherent_file "$CHANGE_DIR/05_implementation_report.md"; then
   echo "Implementacio completada"
-elif is_completed_file "$CHANGE_DIR/04_tasks.md"; then
-  echo "Tasks definides - llest per implementar"
-elif is_completed_file "$CHANGE_DIR/03_design.md"; then
-  echo "Design completat"
 elif is_coherent_file "$CHANGE_DIR/02_spec_delta.md"; then
   echo "Spec definida"
 elif is_coherent_file "$CHANGE_DIR/01_proposal.md"; then
@@ -171,28 +178,86 @@ else
 fi
 
 echo ""
-echo "---- PROPER PAS SUGGERIT ----"
+echo "---- ESTADO ACTUAL ----"
 
 if ! is_coherent_file "$CHANGE_DIR/01_proposal.md"; then
-  echo "Executa Planner"
-  echo "Workflow: workflows/run-planner.md"
+  current_state="Planner pendent"
+  next_step="Executa Planner"
+  next_workflow="workflows/run-planner.md"
+  open_now=(
+    "docs/active/current-change/01_proposal.md"
+    "agents/planner.md"
+    "workflows/run-planner.md"
+  )
 elif ! is_coherent_file "$CHANGE_DIR/02_spec_delta.md"; then
-  echo "Executa Spec Writer"
-  echo "Workflow: workflows/run-spec-writer.md"
+  current_state="Spec Writer pendent"
+  next_step="Executa Spec Writer"
+  next_workflow="workflows/run-spec-writer.md"
+  open_now=(
+    "docs/active/current-change/02_spec_delta.md"
+    "agents/spec-writer.md"
+    "workflows/run-spec-writer.md"
+  )
 elif ! is_coherent_file "$CHANGE_DIR/05_implementation_report.md"; then
-  echo "Fes revisio humana de proposal/spec i despres Implementer"
-  echo "Workflow: workflows/run-implementer.md"
+  current_state="Implementacio pendent"
+  next_step="Fes revisio humana de proposal/spec i despres Implementer"
+  next_workflow="workflows/run-implementer.md"
+  open_now=(
+    "docs/active/current-change/02_spec_delta.md"
+    "agents/implementer.md"
+    "workflows/run-implementer.md"
+  )
 elif ! is_coherent_file "$CHANGE_DIR/06_review.md"; then
-  echo "Executa Reviewer"
-  echo "Workflow: workflows/run-reviewer.md"
+  current_state="Review pendent"
+  next_step="Executa Reviewer"
+  next_workflow="workflows/run-reviewer.md"
+  open_now=(
+    "docs/active/current-change/05_implementation_report.md"
+    "agents/reviewer.md"
+    "workflows/run-reviewer.md"
+  )
 elif ! is_coherent_file "$CHANGE_DIR/09_human_approval.md"; then
-  echo "Fes aprovacio humana final i prepara arxiu"
+  current_state="Aprovacio humana pendent"
+  next_step="Fes aprovacio humana final i prepara arxiu"
+  next_workflow=""
+  open_now=(
+    "docs/active/current-change/06_review.md"
+    "docs/active/current-change/09_human_approval.md"
+    "agents/archivist.md"
+  )
 else
-  echo "Executa Archivist i despres arxiva el canvi"
-  echo "Workflow: workflows/run-archivist.md"
-  echo "Script: ./scripts/archive-change.sh <nom-canvi>"
+  current_state="Canvi llest per arxivar"
+  next_step="Executa Archivist i despres arxiva el canvi"
+  next_workflow="workflows/run-archivist.md"
+  open_now=(
+    "docs/active/current-change/06_review.md"
+    "docs/active/current-change/09_human_approval.md"
+    "workflows/run-archivist.md"
+  )
 fi
 
+echo ""
+echo "$current_state"
+echo ""
+echo "---- ABRE AHORA ----"
+for file in "${open_now[@]}"; do
+  echo "- $file"
+done
+echo ""
+echo "---- IGNORA POR AHORA ----"
+echo "- design"
+echo "- tasks"
+echo "- tests"
+echo "- security"
+echo ""
+echo "---- SIGUIENTE PASO ----"
+echo "$next_step"
+if [ -n "${next_workflow:-}" ]; then
+  echo "Workflow: $next_workflow"
+fi
+if [ "$current_state" = "Canvi llest per arxivar" ]; then
+  echo "Script: ./scripts/archive-change.sh"
+fi
 echo ""
 echo "---- MODE BASE RECOMANAT ----"
 echo "Planner -> Spec Writer -> Implementer -> Reviewer -> Archivist"

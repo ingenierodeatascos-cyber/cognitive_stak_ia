@@ -51,7 +51,7 @@ Respon:
 
 L'omple el `designer` si cal.
 
-Es opcional.
+Es OPCIONAL.
 
 Només s'utilitza quan hi ha una part visual o de flux d'usuari que val la pena definir abans d'implementar.
 
@@ -59,7 +59,7 @@ Només s'utilitza quan hi ha una part visual o de flux d'usuari que val la pena 
 
 L'omple el `task-writer` si cal.
 
-Es opcional.
+Es OPCIONAL.
 
 Només s'utilitza quan el canvi es massa gran o ambigu i cal descompondre'l en tasques petites.
 
@@ -83,7 +83,7 @@ Decideix si el canvi passa o falla i deixa visibles els problemes.
 
 L'omple el `tester` si cal.
 
-Es opcional.
+Es OPCIONAL.
 
 S'utilitza quan hi ha prou risc funcional com per documentar explicitament els tests.
 
@@ -91,7 +91,7 @@ S'utilitza quan hi ha prou risc funcional com per documentar explicitament els t
 
 L'omple el `security-reviewer` si cal.
 
-Es opcional.
+Es OPCIONAL.
 
 S'utilitza quan el canvi toca auth, permisos, dades sensibles o inputs externs.
 
@@ -120,6 +120,8 @@ Activa peces extra nomes si fan falta:
 - `04_tasks.md`
 - `07_test_report.md`
 - `08_security_review.md`
+
+Si estas fent una task petita o mitjana, ignora aquestes peces fins que hi hagi una necessitat clara.
 
 ## Regles practiques
 
