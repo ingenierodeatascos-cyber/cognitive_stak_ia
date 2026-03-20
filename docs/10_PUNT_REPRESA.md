@@ -96,6 +96,14 @@ I executa:
 ./scripts/validate-maintainability.sh
 ```
 
+## Prompt curt per reprendre a Codex
+
+Quan obris una conversa nova, pots enganxar directament aquest prompt:
+
+```text
+Llegeix `docs/10_PUNT_REPRESA.md`, `README.md`, `docs/01_MANUAL_ESTUDIANT_DAM.md`, `docs/09_CHECKLIST_DOCUMENTAL.md`, `scripts/validate-docs.sh`, `scripts/validate-flow.sh` i `scripts/validate-maintainability.sh`. Valida l'estat actual i implementa només la següent tasca petita recomanada del punt de represa.
+```
+
 ## Que no fer ara
 
 - no intentar deixar-ho perfecte en aquesta mateixa sessio
