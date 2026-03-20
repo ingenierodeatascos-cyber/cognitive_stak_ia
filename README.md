@@ -1,10 +1,10 @@
 # AI Cognitive Stack Template
 
-Plantilla per desenvolupar software amb IA de forma estructurada, amb context controlat i validacio humana.
+Plantilla per desenvolupar software amb IA de manera estructurada, amb context controlat i validacio humana.
 
 ## Per a qui es
 
-Aquest repo esta pensat sobretot per a:
+Aquest repositori esta pensat sobretot per a:
 
 - estudiants de DAM que volen aprendre a treballar amb IA amb control
 - desenvolupadors que volen una base reusable per projectes petits o mitjans
@@ -57,39 +57,15 @@ Si es la teva primera vegada, fes nomes aixo.
 
 Aixo genera el workspace temporal dins `docs/active/current-change/`.
 
-### 3. Treballa nomes amb el flux minim
+### 3. Fes la teva primera task
 
-Obre nomes aquests fitxers:
+Comenca per aqui:
 
 - `agents/planner.md`
 - `workflows/run-planner.md`
-- `docs/project/*`
 - `docs/active/current-change/01_proposal.md`
 
-Quan tanquis la proposal, continua amb:
-
-- `agents/spec-writer.md`
-- `workflows/run-spec-writer.md`
-- `docs/active/current-change/02_spec_delta.md`
-
-Despres continua amb:
-
-- `agents/implementer.md`
-- `workflows/run-implementer.md`
-- `docs/active/current-change/05_implementation_report.md`
-
-Despres continua amb:
-
-- `agents/reviewer.md`
-- `workflows/run-reviewer.md`
-- `docs/active/current-change/06_review.md`
-
-Ignora per ara:
-
-- `03_design.md`
-- `04_tasks.md`
-- `07_test_report.md`
-- `08_security_review.md`
+Quan acabis, executa una altra vegada `./scripts/status.sh` i segueix el que et digui.
 
 ### 4. Quan tanquis el canvi, arxiva'l
 
@@ -101,8 +77,7 @@ L'arxiu queda a `docs/archive/<any>/<nom-canvi>/` com a historic local per defec
 
 ## Regla del primer dia
 
-Si dubtes, no obris mes context.
-Obre nomes els fitxers de la fase actual.
+Si dubtes, no obris mes context: obre nomes els fitxers de la fase actual.
 
 ## Estructura minima
 

@@ -1,4 +1,4 @@
-# CODEX WORKFLOW CHEATSHEET
+# Cheatsheet del Flux Codex
 
 ## Flux minim
 

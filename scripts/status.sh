@@ -22,21 +22,17 @@ has_active_change_files() {
 }
 
 if [ ! -d "$CHANGE_DIR" ] || ! has_active_change_files; then
-  echo "---- ESTADO ACTUAL ----"
+  echo "---- ESTAT ACTUAL ----"
   echo "No hi ha cap canvi actiu."
   echo ""
-  echo "---- ABRE AHORA ----"
-  echo "- README.md"
+  echo "---- OBRE ARA ----"
   echo "- docs/00_CODEX_CHEATSHEET.md"
+  echo ""
+  echo "---- IGNORA PER ARA ----"
+  echo "- README.md"
   echo "- docs/01_MANUAL_ESTUDIANT_DAM.md"
   echo ""
-  echo "---- IGNORA POR AHORA ----"
-  echo "- design"
-  echo "- tasks"
-  echo "- tests"
-  echo "- security"
-  echo ""
-  echo "---- SIGUIENTE PASO ----"
+  echo "---- SEGUENT PAS ----"
   echo "./scripts/start-change.sh <nom-canvi>"
   exit 0
 fi
@@ -178,7 +174,7 @@ else
 fi
 
 echo ""
-echo "---- ESTADO ACTUAL ----"
+echo "---- ESTAT ACTUAL ----"
 
 if ! is_coherent_file "$CHANGE_DIR/01_proposal.md"; then
   current_state="Planner pendent"
@@ -239,18 +235,18 @@ fi
 echo ""
 echo "$current_state"
 echo ""
-echo "---- ABRE AHORA ----"
+echo "---- OBRE ARA ----"
 for file in "${open_now[@]}"; do
   echo "- $file"
 done
 echo ""
-echo "---- IGNORA POR AHORA ----"
+echo "---- IGNORA PER ARA ----"
 echo "- design"
 echo "- tasks"
 echo "- tests"
 echo "- security"
 echo ""
-echo "---- SIGUIENTE PASO ----"
+echo "---- SEGUENT PAS ----"
 echo "$next_step"
 if [ -n "${next_workflow:-}" ]; then
   echo "Workflow: $next_workflow"

@@ -37,10 +37,10 @@ test ! -f docs/active/current-change/08_security_review.md
 
 echo "Checking status after start-change..."
 status_output="$(./scripts/status.sh)"
-echo "$status_output" | grep -q "ESTADO ACTUAL"
-echo "$status_output" | grep -q "ABRE AHORA"
-echo "$status_output" | grep -q "IGNORA POR AHORA"
-echo "$status_output" | grep -q "SIGUIENTE PASO"
+echo "$status_output" | grep -q "ESTAT ACTUAL"
+echo "$status_output" | grep -q "OBRE ARA"
+echo "$status_output" | grep -q "IGNORA PER ARA"
+echo "$status_output" | grep -q "SEGUENT PAS"
 echo "$status_output" | grep -q "Executa Planner"
 
 cat <<'EOF' > docs/active/current-change/01_proposal.md
