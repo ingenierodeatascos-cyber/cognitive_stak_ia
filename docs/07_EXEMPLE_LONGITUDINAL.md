@@ -25,6 +25,8 @@ Comanda:
 ./scripts/start-change.sh create-and-list-tasks
 ```
 
+Aquesta comanda crea els fitxers del canvi actiu dins `docs/active/current-change/`.
+
 ## 3. Proposal
 
 Objectiu:
@@ -88,6 +90,8 @@ Quan el canvi esta tancat:
 ```bash
 ./scripts/archive-change.sh create-and-list-tasks
 ```
+
+L'historic queda guardat a `docs/archive/<any>/create-and-list-tasks/`.
 
 ## 9. Que aprens d'aquest exemple
 

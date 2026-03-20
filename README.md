@@ -53,6 +53,8 @@ Peces com `task-writer`, `designer`, `tester` o `security-reviewer` son opcional
 ./scripts/start-change.sh feature-login
 ```
 
+Aixo genera el workspace temporal dins `docs/active/current-change/`.
+
 ### 3. Segueix el flux base
 
 - `workflows/run-planner.md`
@@ -67,6 +69,8 @@ Peces com `task-writer`, `designer`, `tester` o `security-reviewer` son opcional
 ./scripts/archive-change.sh feature-login
 ```
 
+L'arxiu queda a `docs/archive/<any>/<nom-canvi>/` com a historic local per defecte.
+
 ## Estructura minima
 
 ```text
@@ -75,7 +79,7 @@ workflows/                   instruccions per cada fase
 templates/                   formats de sortida
 scripts/                     operativa de terminal
 docs/project/                context estable del projecte
-docs/active/current-change/  canvi actual
+docs/active/current-change/  workspace temporal del canvi actual
 docs/memory/                 coneixement reusable
 memory/                      memòria interna del sistema
 ```

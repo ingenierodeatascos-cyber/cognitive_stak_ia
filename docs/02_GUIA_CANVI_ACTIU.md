@@ -4,6 +4,8 @@ Aquest document explica com s'ha d'entendre `docs/active/current-change/`.
 
 La idea clau es simple: aqui nomes viu el que estàs fent ara. No es memoria permanent ni descripcio general del projecte.
 
+Aquest directori es un workspace temporal: els fitxers del canvi actiu es generen amb `./scripts/start-change.sh` i es netegen en arxivar.
+
 ## Que es un canvi actiu
 
 Un canvi actiu es una unitat de treball concreta.
@@ -125,6 +127,7 @@ Activa peces extra nomes si fan falta:
 - no hi posis memoria reusable
 - no hi barregis altres canvis
 - si el canvi es tanca, s'arxiva
+- l'historic del canvi arxivat viu a `docs/archive/<any>/<nom-canvi>/` i no forma part del context actiu
 
 ## Idea final
 

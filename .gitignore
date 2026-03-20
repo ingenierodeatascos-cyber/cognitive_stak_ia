@@ -1,0 +1,5 @@
+docs/active/current-change/*
+!docs/active/current-change/
+!docs/active/current-change/.gitkeep
+
+docs/archive/[0-9][0-9][0-9][0-9]/

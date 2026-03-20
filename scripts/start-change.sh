@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -e
+set -euo pipefail
 
 if [ -z "$1" ]; then
   echo "Has d'indicar el nom del canvi"
@@ -12,7 +12,11 @@ CHANGE_NAME=$1
 CHANGE_DIR="docs/active/current-change"
 META_FILE="$CHANGE_DIR/00_meta.md"
 
-if [ -d "$CHANGE_DIR" ] && [ "$(ls -A "$CHANGE_DIR" 2>/dev/null)" ]; then
+has_active_change_files() {
+  find "$CHANGE_DIR" -mindepth 1 -maxdepth 1 ! -name '.gitkeep' -print -quit | grep -q .
+}
+
+if [ -d "$CHANGE_DIR" ] && has_active_change_files; then
   echo "Ja hi ha un canvi actiu a docs/active/current-change"
   echo "Arxiva'l abans de crear-ne un de nou:"
   echo "  ./scripts/archive-change.sh <nom-canvi>"
@@ -22,6 +26,7 @@ fi
 echo "Creant nou canvi: $CHANGE_NAME"
 
 mkdir -p "$CHANGE_DIR"
+touch "$CHANGE_DIR/.gitkeep"
 
 touch "$CHANGE_DIR/00_meta.md"
 touch "$CHANGE_DIR/01_proposal.md"

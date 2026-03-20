@@ -24,6 +24,13 @@ for file in scripts/bootstrap.sh scripts/sync-memory.sh .github/workflows/releas
   fi
 done
 
+echo "Checking gitignore keeps operational state out of git..."
+
+rg -q '^docs/active/current-change/\*$' .gitignore
+rg -q '^!docs/active/current-change/$' .gitignore
+rg -q '^!docs/active/current-change/\.gitkeep$' .gitignore
+rg -q '^docs/archive/\[0-9\]\[0-9\]\[0-9\]\[0-9\]/$' .gitignore
+
 echo "Checking core docs describe the short flow..."
 
 rg -q "planner" README.md

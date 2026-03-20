@@ -16,7 +16,10 @@ cp -R "$ROOT_DIR" "$TEST_REPO"
 
 cd "$TEST_REPO"
 
+initial_git_status="$(git status --short)"
+
 rm -f docs/active/current-change/* 2>/dev/null || true
+touch docs/active/current-change/.gitkeep
 
 echo "Checking start-change..."
 ./scripts/start-change.sh flow-test >/tmp/validate-flow-start.log
@@ -95,6 +98,23 @@ EOF
 echo "Checking status after spec..."
 status_output="$(./scripts/status.sh)"
 echo "$status_output" | grep -q "Implementer"
+
+echo "Checking incoherent implementation report is not accepted as completed..."
+cat <<'EOF' > docs/active/current-change/05_implementation_report.md
+# IMPLEMENTATION RESULT
+
+## Tasks executed
+
+- formulari de creacio
+
+## Files modified
+
+- src/task-form.ts
+EOF
+
+status_output="$(./scripts/status.sh)"
+echo "$status_output" | grep -q "05_implementation_report.md (contingut present pero camps minims incomplets)"
+echo "$status_output" | grep -q "Fes revisio humana de proposal/spec i despres Implementer"
 
 cat <<'EOF' > docs/active/current-change/05_implementation_report.md
 # IMPLEMENTATION RESULT
@@ -193,8 +213,19 @@ echo "Checking archive-change..."
 
 test -d "docs/archive/$(date +"%Y")/flow-test"
 
-if find docs/active/current-change -mindepth 1 -print -quit | grep -q .; then
+if find docs/active/current-change -mindepth 1 ! -name '.gitkeep' -print -quit | grep -q .; then
   echo "Current change directory is not empty after archive"
+  exit 1
+fi
+
+echo "Checking git hygiene in temporary repo..."
+git_status="$(git status --short)"
+if [ "$git_status" != "$initial_git_status" ]; then
+  echo "Temporary repo changed its git status during flow validation:"
+  echo "Initial:"
+  echo "$initial_git_status"
+  echo "Current:"
+  echo "$git_status"
   exit 1
 fi
 

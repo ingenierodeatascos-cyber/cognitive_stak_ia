@@ -40,6 +40,7 @@ Quan comences una funcionalitat o millora nova.
 - carpeta `docs/active/current-change/` preparada
 - metadades inicials
 - fitxers del canvi amb capçaleres base
+- el workspace temporal es genera sota demanda; no es conserva versionat en git
 
 ## `status.sh`
 
@@ -67,6 +68,7 @@ Mostra l'estat del canvi actiu.
 ### Resultat esperat
 
 - fitxers plens o buits
+- avisos si un fitxer te contingut pero no omple els camps minims de la fase
 - fase estimada
 - seguent pas recomanat
 
@@ -95,6 +97,7 @@ Quan el canvi esta tancat i llest per passar a historic.
 
 - canvi arxivat
 - `docs/active/current-change/` net
+- historic local creat a `docs/archive/<any>/<nom-canvi>/` sense embrutar `git status` per defecte
 
 ## `bootstrap.sh`
 
@@ -170,6 +173,7 @@ Valida el flux operatiu basic en un entorn temporal.
 - `start-change.sh` crea l'estructura esperada
 - `status.sh` recomana el seguent pas correcte
 - `archive-change.sh` arxiva i neteja correctament
+- el repo temporal queda net despres del cicle complet
 
 ### Exemple
 
@@ -197,6 +201,7 @@ Comprova mantenibilitat basica del sistema.
 
 - no hi ha fitxers buits a `scripts/`, `workflows/` o `.github/workflows/`
 - els placeholders coneguts no estan buits
+- `.gitignore` protegeix l'estat operatiu temporal del repo
 - el flux curt continua reflectit als docs principals
 - la capa avancada continua marcada com a opcional
 

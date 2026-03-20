@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -e
+set -euo pipefail
 
 # =========================
 # VALIDACIÓ INPUT
@@ -19,11 +19,15 @@ ARCHIVE_BASE="docs/archive/$YEAR"
 ARCHIVE_PATH="$ARCHIVE_BASE/$CHANGE_NAME"
 META_FILE="$CHANGE_DIR/00_meta.md"
 
+has_active_change_files() {
+  find "$CHANGE_DIR" -mindepth 1 -maxdepth 1 ! -name '.gitkeep' -print -quit | grep -q .
+}
+
 # =========================
 # VALIDAR EXISTÈNCIA DE CANVI ACTIU
 # =========================
 
-if [ ! -d "$CHANGE_DIR" ] || [ -z "$(ls -A "$CHANGE_DIR" 2>/dev/null)" ]; then
+if [ ! -d "$CHANGE_DIR" ] || ! has_active_change_files; then
   echo "❌ No hi ha cap canvi actiu a $CHANGE_DIR"
   exit 1
 fi
