@@ -4,38 +4,39 @@ Aquest document serveix per tallar una sessio sense perdre el fil.
 
 ## Estat actual
 
-La base del repo ja esta molt avançada en tres blocs:
+La base del repo ja esta tancada en tres blocs principals:
 
 ### 1. Documentacio base i onboarding
 
-Ja esta treballat:
+Treballat i alineat amb el flux minim:
 
 - `README.md`
 - `docs/00_CODEX_CHEATSHEET.md`
 - `docs/01_MANUAL_ESTUDIANT_DAM.md`
-- `docs/project/*`
-- guies didactiques complementaries a `docs/02_*` fins `docs/09_*`
+- `docs/02_*` fins `docs/09_*`
 
-### 2. Validacions i CI
+### 2. Validacions i flux operatiu
 
-Ja esta treballat:
+Treballat i estable:
 
+- `scripts/start-change.sh`
+- `scripts/status.sh`
+- `scripts/archive-change.sh`
 - `scripts/validate-docs.sh`
 - `scripts/validate-flow.sh`
 - `scripts/validate-maintainability.sh`
-- `.github/workflows/ci.yml`
 
 ### 3. Poliment final
 
-Ja esta parcialment treballat:
+Queda pendent nomes manteniment petit i coherencia documental puntual:
 
-- alineacio del flux curt i avançat
-- placeholders documentats
-- millora del canvi actiu i dels scripts
+- repassar guies secundaries
+- retocar alguna descripcio menys precisa
+- mantenir el punt de represa alineat amb l'estat real
 
 ## Validacio actual
 
-En aquest punt, el repo passa:
+En aquest punt, el repo continua passant:
 
 - `./scripts/validate-docs.sh`
 - `./scripts/validate-flow.sh`
@@ -45,34 +46,27 @@ En aquest punt, el repo passa:
 
 No cal obrir nous fronts grans.
 
-El pendent mes raonable ara es triar **un unic canvi petit** entre:
+El pendent mes raonable ara es un unic canvi petit de coherencia documental.
 
-### Opcio A
+Objectiu:
 
-Tancar una validacio de coherencia del canvi actiu:
-
-- comprovar que els fitxers del canvi no nomes existeixen, sino que tenen camps minims coherents segons la fase
-
-### Opcio B
-
-Fer poliment final de documentacio:
-
-- retallar repeticions petites
-- ajustar llenguatge o consistencia
-- no tocar arquitectura ni afegir noves capes
+- revisar i ajustar documentacio secundaria que encara pugui quedar una mica desalineada amb el flux minim actual
+- no tocar arquitectura
+- no tocar scripts nuclears
+- no afegir nous subsistemes
 
 ## Seguent pas recomanat
 
 El seguent pas petit recomanat es:
 
-**Opcio A: validacio de coherencia del canvi actiu**
+**Poliment petit de documentacio operativa secundaria**
 
 Perque:
 
 - es petita
-- te impacte real
-- no obre un subsistema nou
-- encaixa be amb les validacions que ja existeixen
+- no toca arquitectura
+- consolida el flux curt ja tancat
+- ajuda a mantenir el repo coherent de cara a noves sessions i us extern
 
 ## Com reprendre sense perdre context
 
@@ -101,7 +95,7 @@ I executa:
 Quan obris una conversa nova, pots enganxar directament aquest prompt:
 
 ```text
-Llegeix `docs/10_PUNT_REPRESA.md`, `README.md`, `docs/01_MANUAL_ESTUDIANT_DAM.md`, `docs/09_CHECKLIST_DOCUMENTAL.md`, `scripts/validate-docs.sh`, `scripts/validate-flow.sh` i `scripts/validate-maintainability.sh`. Valida l'estat actual i implementa només la següent tasca petita recomanada del punt de represa.
+Llegeix `docs/10_PUNT_REPRESA.md`, `README.md`, `docs/01_MANUAL_ESTUDIANT_DAM.md`, `docs/09_CHECKLIST_DOCUMENTAL.md`, `scripts/validate-docs.sh`, `scripts/validate-flow.sh` i `scripts/validate-maintainability.sh`. Valida l'estat actual amb context mínim i implementa només la següent tasca petita recomanada del punt de represa. No obris nous fronts ni llegeixis altres fitxers si no és estrictament necessari.
 ```
 
 ## Que no fer ara
